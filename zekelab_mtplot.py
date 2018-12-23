@@ -59,3 +59,31 @@ plt.grid(True) # will show in grid
 import pandas as pd
 df=pd.DataFrame({'A':range(10),'B':range(5,15)})
 df.plot.line(title='plot')
+
+
+from sklearn.datasets import load_iris
+x=np.random.random((500,))*3
+noise=np.random.randn(500)
+mactual, cactual=2,3
+y=mactual*x+cactual+noise*0.9
+plt.scatter(x,y)
+plt.plot(x,y) # do not use when SD is more
+
+
+from sklearn.linear_model import LinearRegression
+model=LinearRegression()
+x=x.reshape(-1,1)
+model.fit(x,y)
+print((model.intercept_)) #bias for LP
+print(model.coef_)  # coffecient
+
+
+#y=x^2  from -3 to 3 and fit line with noise of SD .5 and plot it
+x1=np.random.random((500))*(-3)
+x2=np.random.random((500))*(3)
+arr=np.append(x1,x2)
+mactual1, cactual1=2,3
+noise1=np.random.randn(1000)
+y1=arr*arr+noise1*0.5
+print(plt.scatter(arr, y1))
+plt.plot(arr,y1) # do not use when SD is more
