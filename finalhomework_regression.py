@@ -14,3 +14,21 @@ x3=np.append((np.random.random(500)*-3),(np.random.random(500)*3))
 x4=np.append((np.random.random(500)*-3),(np.random.random(500)*3))
 y_actual=2*x1+3*x2+noise*0.5
 datatest=pd.DataFrame({'x1':x3,'x2':x4,'y':y_actual},columns=['x1','x2','y'])
+
+
+# aplly linear/lasso/ridge regression
+from sklearn.linear_model import LinearRegression,Ridge,Lasso
+lr=LinearRegression()
+rd=Ridge()
+las=Lasso()
+
+
+# fit train data for all regression
+lr.fit(data[['x1','x2']],data[['y']])
+rd.fit(data[['x1','x2']],data[['y']])
+las.fit(data[['x1','x2']],data[['y']])
+
+#predict test data
+lr_out=lr.predict(datatest[['x1','x2']])
+rd_out=rd.predict(datatest[['x1','x2']])
+las_out=las.predict(datatest[['x1','x2']])
