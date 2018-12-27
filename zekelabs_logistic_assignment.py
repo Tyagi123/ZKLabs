@@ -39,6 +39,7 @@ from sklearn.metrics import classification_report
 print(classification_report(y_out_actual, y_out))
 
 
+
 # seaborn plots
 import seaborn as sns
 
@@ -53,3 +54,9 @@ print(confusion_matrix(y_out_actual, y_out))
 #Accuracy score
 from sklearn.metrics import accuracy_score
 print(accuracy_score(y_out_actual, y_out))
+
+
+datavis=pd.DataFrame({'x1':x1,'x2':x2,'y':y},columns=['x1','x2','y'])
+
+# visualize the relationship between the features and the response using scatterplots
+sns.pairplot(datavis, x_vars=['x1','x2'], y_vars='y', size=10, aspect=1)
