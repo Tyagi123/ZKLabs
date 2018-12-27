@@ -32,3 +32,9 @@ las.fit(data[['x1','x2']],data[['y']])
 lr_out=lr.predict(datatest[['x1','x2']])
 rd_out=rd.predict(datatest[['x1','x2']])
 las_out=las.predict(datatest[['x1','x2']])
+
+
+
+print("Linear Regression bias and cofe"+str(lr.coef_)+str(lr.intercept_))
+print("Ridge Regression bias and cofe"+str(rd.coef_)+str(rd.intercept_))
+print("Lasso Regression bias and cofe"+str(las.coef_)+str(las.intercept_))
