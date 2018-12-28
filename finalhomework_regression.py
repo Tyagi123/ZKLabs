@@ -74,3 +74,23 @@ print('Ridge Regression Variance score: %.2f' % rd.score(datatest[['x1','x2']], 
 print("Lasso Regression Mean squared error: %.2f" % np.mean((las.predict(datatest[['x1','x2']]) - las_out) ** 2))
 # Explained variance score: 1 is perfect prediction
 print('Lasso Regression Variance score: %.2f' % las.score(datatest[['x1','x2']], las_out))
+
+
+
+min_x=np.min(datatest['x1'])
+max_x=np.max(datatest['x1'])
+x_range=np.linspace(min_x,max_x,1000)
+plt.plot(x_range,y_actual,color='black')
+plt.scatter(datatest['x1'],datatest['y'],color='red')
+
+
+
+from sklearn.metrics import mean_squared_error,mean_absolute_error
+
+print('Linear Regression mean square errors =    '+str(mean_squared_error(y_actual,lr_out)))
+print('Ridge Regression mean square errors =    '+str(mean_squared_error(y_actual,rd_out)))
+print('Lasso Regression mean square errors =    '+str(mean_squared_error(y_actual,las_out)))
+
+print('Linear Regression mean absolute errors =    '+str(mean_absolute_error(y_actual,lr_out)))
+print('Ridge Regression mean absolute errors =    '+str(mean_absolute_error(y_actual,rd_out)))
+print('Lasso Regression mean absolute errors =    '+str(mean_absolute_error(y_actual,las_out)))
