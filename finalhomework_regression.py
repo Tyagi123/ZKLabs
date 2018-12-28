@@ -38,3 +38,39 @@ las_out=las.predict(datatest[['x1','x2']])
 print("Linear Regression bias and cofe"+str(lr.coef_)+str(lr.intercept_))
 print("Ridge Regression bias and cofe"+str(rd.coef_)+str(rd.intercept_))
 print("Lasso Regression bias and cofe"+str(las.coef_)+str(las.intercept_))
+
+
+import matplotlib.pyplot as plt
+plt.scatter(x2,x3,color='black')
+plt.plot(y_actual,lr_out)
+plt.show()
+
+
+plt.scatter(x2,x3,color='black')
+plt.plot(rd_out,y_actual)
+plt.show()
+
+
+plt.scatter(datatest,data,color='black')
+plt.plot(y_actual,las_out,color='red')
+plt.show()
+
+
+
+
+# The mean squared error
+print("Linear Regression Mean squared error: %.2f" % np.mean((lr.predict(datatest[['x1','x2']]) - lr_out) ** 2))
+# Explained variance score: 1 is perfect prediction
+print('Linear Regression Variance score: %.2f' % lr.score(datatest[['x1','x2']], lr_out))
+
+
+# The mean squared error
+print("Ridge Regression Mean squared error: %.2f" % np.mean((rd.predict(datatest[['x1','x2']]) - rd_out) ** 2))
+# Explained variance score: 1 is perfect prediction
+print('Ridge Regression Variance score: %.2f' % rd.score(datatest[['x1','x2']], rd_out))
+
+
+# The mean squared error
+print("Lasso Regression Mean squared error: %.2f" % np.mean((las.predict(datatest[['x1','x2']]) - las_out) ** 2))
+# Explained variance score: 1 is perfect prediction
+print('Lasso Regression Variance score: %.2f' % las.score(datatest[['x1','x2']], las_out))
