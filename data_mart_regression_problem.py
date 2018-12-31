@@ -40,4 +40,46 @@ print(lreg.score(x_cv, y_cv))
 import matplotlib.pyplot as plt
 x_plot = plt.scatter(pred, (pred - y_cv), c='b')
 plt.hlines(y=0, xmin= -1000, xmax=5000)
-plt.title('Residual plot')
+plt.title('Residual plot for Linear Regression')
+plt.show()
+
+# Apply Ridge and Lasso regression
+from sklearn.linear_model import Ridge,Lasso
+rd=Ridge()
+las=Lasso()
+
+# fit it
+rd.fit(x_train,y_train)
+las.fit(x_train,y_train)
+
+# predict output
+rd_out=rd.predict(x_cv)
+las_out=las.predict(x_cv)
+
+#residual plot for Ridge regression
+import matplotlib.pyplot as plt
+x_plot = plt.scatter(rd_out, (rd_out - y_cv), c='b')
+plt.hlines(y=0, xmin= -1000, xmax=5000)
+plt.title('Residual plot for Ridge Regression')
+plt.show()
+
+#residual plot for Lasso regression
+import matplotlib.pyplot as plt
+x_plot = plt.scatter(las_out, (las_out - y_cv), c='b')
+plt.hlines(y=0, xmin= -1000, xmax=5000)
+plt.title('Residual plot for Lasso Regression')
+plt.show()
+
+
+
+from sklearn.metrics import accuracy_score,mean_absolute_error,mean_squared_error
+
+# mean absolute error for all regression
+print('Linear regression mean absolute error = ' + str(mean_absolute_error(pred,y_cv)))
+print('Ridge regression mean absolute error = ' + str(mean_absolute_error(rd_out,y_cv)))
+print('Lasso regression mean absolute error = ' + str(mean_absolute_error(las_out,y_cv)))
+
+# mean squared error for all regression
+print('Linear regression mean squared error = ' + str(mean_squared_error(pred,y_cv)))
+print('Ridge regression mean squared error = ' + str(mean_squared_error(rd_out,y_cv)))
+print('Lasso regression mean squared error = ' + str(mean_squared_error(las_out,y_cv)))
